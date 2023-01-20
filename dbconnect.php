@@ -21,6 +21,12 @@ class Connection{
     protected  function connect()
     {
         $conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-        return $conn;
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+          }
+          else{
+              return $conn;
+          }
     }
 }
